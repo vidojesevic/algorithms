@@ -27,11 +27,12 @@ function mergeSort($array = array()): array
 /**
 * merge function
 *
-* @param array $array - Array of unsorted integers
+* @param array $left - Array of left peace
+* @param array $right - Array of right peace
 *
 * @return array
 */
-function merge($left, $right): array
+function merge($left = array(), $right = array()): array
 {
     $result = array();
     $indexLeft = 0;

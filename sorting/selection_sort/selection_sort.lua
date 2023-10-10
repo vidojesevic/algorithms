@@ -18,6 +18,6 @@ local function selectionSort(array)
     return array
 end
 
-print(table.concat(arr, ", "))
+print("Unsorted list:\n" .. table.concat(arr, " "))
 local sorted = selectionSort(arr)
-print(table.concat(sorted, ", "))
+print("Sorted list:\n" .. table.concat(sorted, " "))

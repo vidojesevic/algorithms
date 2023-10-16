@@ -157,23 +157,77 @@ class BinarySearchTree {
         }
         return this.breadthFirstSearchRecursive(queue, list);
     }
+    DFSInOrder() {
+        return traverseInOrder(this.root, []);
+    }
+    DFSPostOrder() {
+        return traversePostOrder(this.root, []);
+    }
+    DFSPreOrder() {
+        return traversePreOrder(this.root, []);
+    }
 }
 
 const tree = new BinarySearchTree();
 tree.insert(9);
 tree.insert(4);
-tree.insert(5);
+tree.insert(6);
 tree.insert(23);
 tree.insert(69);
 tree.insert(15);
 tree.insert(1);
 // tree.remove(170);
-console.log(tree.lookup(20));
+console.log(tree.lookup(23));
 console.log(JSON.stringify(traverse(tree.root)));
+
+// BFS
 console.log("Breadth First Search Iterative:");
 console.log(tree.breadthFirstSearch());
 console.log("Breadth First Search Recursive:");
 console.log(tree.breadthFirstSearchRecursive([tree.root], []));
+
+// DFS
+console.log("Depth First Search | In Order:");
+function traverseInOrder(node, list) {
+    if (node.left) {
+        traverseInOrder(node.left, list);
+    }
+    list.push(node.value);
+    if (node.right) {
+        traverseInOrder(node.right, list);
+    }
+    return list;
+}
+const DFSio = tree.DFSInOrder();
+console.log(DFSio);
+
+console.log("Depth First Search | Pre Order:");
+function traversePreOrder(node, list) {
+    list.push(node.value);
+    if (node.left) {
+        traversePreOrder(node.left, list);
+    }
+    if (node.right) {
+        traversePreOrder(node.right, list);
+    }
+    return list;
+}
+const DFSpre = tree.DFSPreOrder();
+console.log(DFSpre);
+
+console.log("Depth First Search | Post Order:");
+function traversePostOrder(node, list) {
+    if (node.left) {
+        traversePostOrder(node.left, list);
+    }
+    if (node.right) {
+        traversePostOrder(node.right, list);
+    }
+    list.push(node.value);
+    return list;
+}
+const DFSpost = tree.DFSPostOrder();
+console.log(DFSpost);
 
 function traverse(node) {
     const tree = { value: node.value };
@@ -181,4 +235,3 @@ function traverse(node) {
     tree.right = node.right === null ? null : traverse(node.right);
     return tree;
 }
-

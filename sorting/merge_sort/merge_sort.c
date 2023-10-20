@@ -1,7 +1,3 @@
-/*    Program: Merge Sort
- *    Author: Vidoje Sevic 
- *    Date: 02. 08. 2023. 
- *    Purpose: Learning advanced algorithms    */
 #include <stdio.h>
 
 void printList(int a[], int length);
